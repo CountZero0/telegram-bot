@@ -56,3 +56,4 @@ def send_message(answer, bot, chat_id):
 if __name__ == '__main__':
     bot = telegram.Bot('5224554467:AAEVXCNK0Me5AUI1HLDKzwPg4oH6WOAbNN0')
     main()
+    
