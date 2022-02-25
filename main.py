@@ -1,15 +1,20 @@
+import os
 import time
 from urllib.parse import urljoin
 
+from dotenv import load_dotenv
 import requests
 import telegram
 
 
-def main():
+def main():  
     timestamp = time.time()
 
+    tele_chat_id = os.environ['TELEGRAM_CHAT_ID']
+    dvmn_api_token = os.environ['DVMN_TOKEN']
+
     headers = {
-        'Authorization': 'Token be179ef94a5f2312e3530c418f1c5efda27cd2ec'
+        'Authorization': dvmn_api_token
         }
     params = {
         "timestamp": timestamp
@@ -54,6 +59,10 @@ def send_message(answer, bot, chat_id):
     
     
 if __name__ == '__main__':
-    bot = telegram.Bot('5224554467:AAEVXCNK0Me5AUI1HLDKzwPg4oH6WOAbNN0')
+    load_dotenv()
+
+    tele_bot_token = os.environ['TELEGRAM_API_TOKEN']
+    bot = telegram.Bot(tele_bot_token)
+
     main()
     
