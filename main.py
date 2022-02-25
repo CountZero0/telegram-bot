@@ -7,11 +7,8 @@ import requests
 import telegram
 
 
-def main():  
+def main(chat_id, dvmn_api_token):  
     timestamp = time.time()
-
-    tele_chat_id = os.environ['TELEGRAM_CHAT_ID']
-    dvmn_api_token = os.environ['DVMN_TOKEN']
 
     headers = {
         'Authorization': dvmn_api_token
@@ -61,8 +58,11 @@ def send_message(answer, bot, chat_id):
 if __name__ == '__main__':
     load_dotenv()
 
+    tele_chat_id = os.environ['TELEGRAM_CHAT_ID']
+    dvmn_api_token = os.environ['DVMN_TOKEN']
     tele_bot_token = os.environ['TELEGRAM_API_TOKEN']
+
     bot = telegram.Bot(tele_bot_token)
 
-    main()
+    main(tele_chat_id, dvmn_api_token)
     
